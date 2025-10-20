@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
+  <include file="$(find-pkg-share mkz_interface)/launch/interface.launch.py">
+  </include>
 </launch>
