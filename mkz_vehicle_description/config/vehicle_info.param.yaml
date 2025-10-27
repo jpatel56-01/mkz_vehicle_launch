@@ -3,10 +3,10 @@
     wheel_radius: 0.339 # The radius of the wheel, primarily used for dead reckoning.
     wheel_width: 0.245 # The lateral width of a wheel tire, primarily used for dead reckoning.
     wheel_base: 2.850 # between front wheel center and rear wheel center
-    wheel_tread: 1.626 # between left wheel center and right wheel center
-    front_overhang: 0.970 # between front wheel center and vehicle front
-    rear_overhang: 1.053 # between rear wheel center and vehicle rear
-    left_overhang: 0.940 # between left wheel center and vehicle left
-    right_overhang: 0.940 # between right wheel center and vehicle right
+    wheel_tread: 1.579 # between left wheel center and right wheel center
+    front_overhang: 1.000 # between front wheel center and vehicle front
+    rear_overhang: 1.082 # between rear wheel center and vehicle rear
+    left_overhang: 0.141 # between left wheel center and vehicle left
+    right_overhang: 0.141 # between right wheel center and vehicle right
     vehicle_height: 1.48
     max_steer_angle: 0.5236 # [rad]
