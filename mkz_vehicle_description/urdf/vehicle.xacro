@@ -1,15 +1,25 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <!-- load parameter -->
   <xacro:property name="vehicle_info" value="${xacro.load_yaml('$(find mkz_vehicle_description)/config/vehicle_info.param.yaml')}"/>
+  <xacro:property name="wb" value="${vehicle_info['/**']['ros__parameters']['wheel_base']}"/>
+  <xacro:property name="fo" value="${vehicle_info['/**']['ros__parameters']['front_overhang']}"/>
+  <xacro:property name="ro" value="${vehicle_info['/**']['ros__parameters']['rear_overhang']}"/>
 
-  <!-- vehicle body -->
+  <!-- our original longitudinal offset (rear-axle center convention) -->
+  <xacro:property name="x_offset" value="${(wb + fo - ro + 3.84) / 2.0}"/>
+
+  <!-- NEW: tweak these two until the mesh sits perfectly on the footprint -->
+  <xacro:property name="y_offset" value="-0.96"/>   <!-- try +0.08 m; flip sign if it moves the wrong way -->
+  <xacro:property name="z_offset" value="-0.05"/>    <!-- adjust a few cm if it looks sunken/floating -->
+
   <link name="base_link">
     <visual>
-      <origin xyz="${vehicle_info['/**']['ros__parameters']['wheel_base']/2.0} 0 0" rpy="${pi/2.0} 0 ${pi}"/>
+      <origin xyz="${x_offset} ${y_offset} ${z_offset}" rpy="0 0 1.57079632679"/>
       <geometry>
-        <mesh filename="package://mkz_vehicle_description/mesh/continental.dae" scale="1 1 1"/>
+        <mesh filename="package://mkz_vehicle_description/mesh/continental.dae"
+              scale="0.0375 0.0375 0.0375"/>
       </geometry>
     </visual>
   </link>
 </robot>
+
